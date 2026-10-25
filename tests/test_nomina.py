@@ -9,7 +9,7 @@ Un caso por cada regla, tomado en su valor límite (donde suelen estar los error
 Más dos pruebas del programa completo: captura válida (50 h) y mensaje "Número no válido"
 """
 import pytest
-from src.nomina import calcular_nomina
+from src.nomina import calcular_nomina, HorasInvalidasError
 
 # parametrización
 # Ejecuta la misma prueba una vez por cada par de horas y pago esperado.
@@ -22,3 +22,9 @@ from src.nomina import calcular_nomina
 def test_pago_normal(horas, esperado):
     assert calcular_nomina(horas) == esperado
 
+# Ejecuta la prueba con horas menores y mayores que el rango permitido.
+@pytest.mark.parametrize("horas", [-1, 65])
+def test_fuera_de_rango(horas):
+    """Verifica que las horas fuera de rango generen HorasInvalidasError."""
+    with pytest.raises(HorasInvalidasError, match="Número no válido"):
+        calcular_nomina(horas)

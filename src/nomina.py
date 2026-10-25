@@ -13,8 +13,20 @@ TARIFA_NORMAL = 200
 LIMITE_NORMAL = 40
 LIMITE_DOBLE = 56
 
+HORAS_MAXIMAS = 64
+MENSAJE_INVALIDO = "Número no válido"
+
+
+class HorasInvalidasError(ValueError):
+    def __init__(self):
+        super().__init__(MENSAJE_INVALIDO)
+
 
 def calcular_nomina(horas):
+
+    if horas < 0 or horas > HORAS_MAXIMAS:
+        raise HorasInvalidasError()
+
     normales = min(horas, LIMITE_NORMAL)
     dobles = max(min(horas, LIMITE_DOBLE) - LIMITE_NORMAL, 0)
     triples = max(horas - LIMITE_DOBLE, 0)
