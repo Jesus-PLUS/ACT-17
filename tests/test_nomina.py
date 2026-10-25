@@ -8,3 +8,8 @@ Un caso por cada regla, tomado en su valor límite (donde suelen estar los error
 5. Valor no numérico Ej: "abc"
 Más dos pruebas del programa completo: captura válida (50 h) y mensaje "Número no válido"
 """
+
+from src.nomina import calcular_nomina
+
+def test_cero_horas():
+    assert calcular_nomina(0) == 0

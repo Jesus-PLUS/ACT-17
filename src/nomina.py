@@ -8,3 +8,5 @@ Reglas de negocio:
 - 56 a 64 h = 40 h normales + 16 h dobles + excedente al triple ($600/h)
 - Cualquier otro valor = "Número no válido"
 """
+def calcular_nomina(horas):
+    return 0
