@@ -9,7 +9,15 @@ Reglas de negocio:
 - Cualquier otro valor = "Número no válido"
 """
 
+TARIFA_NORMAL = 200
+LIMITE_NORMAL = 40
+LIMITE_DOBLE = 56
+
+
 def calcular_nomina(horas):
-    normales = min(horas, 40)
-    dobles = max(horas - 40, 0)
-    return normales * 200 + dobles * 400
+    normales = min(horas, LIMITE_NORMAL)
+    dobles = max(min(horas, LIMITE_DOBLE) - LIMITE_NORMAL, 0)
+    triples = max(horas - LIMITE_DOBLE, 0)
+    return (normales * TARIFA_NORMAL
+            + dobles * TARIFA_NORMAL * 2
+            + triples * TARIFA_NORMAL * 3)

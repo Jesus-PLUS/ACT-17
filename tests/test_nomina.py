@@ -17,6 +17,7 @@ from src.nomina import calcular_nomina
     (0, 0), # para 0 horas
     (40, 8000), # para 40 hrs y pago normal
     (56, 14400), # para hrs dobles
+    (64, 19200), # hrs triples
 ])
 def test_pago_normal(horas, esperado):
     assert calcular_nomina(horas) == esperado
