@@ -44,7 +44,9 @@ def main(entrada=input, salida=print):
     """Lee las horas, muestra el pago o informa si la entrada no es válida."""
     try:
         horas = float(entrada("Horas trabajadas (0-64): "))
-        calcular_nomina(horas)
+        pago = calcular_nomina(horas)
     except ValueError:
         salida(MENSAJE_INVALIDO)
         return 1
+    salida(f"Pago semanal: ${pago:,.2f}") # separador de miles y dos decimales
+    return 0

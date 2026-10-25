@@ -35,3 +35,11 @@ def test_programa_mensaje_invalido():
     mensajes = []
     assert main(entrada=lambda _: "abc", salida=mensajes.append) == 1
     assert mensajes == ["Número no válido"]
+
+# verifica que procese correctamente una entrada válida y muestre el pago esperado
+def test_programa_muestra_pago():
+    mensajes = []
+    # simula que el usuario ingresa "50" horas
+    # comprueba que main devuelva 0 (que no hay errores)
+    assert main(entrada=lambda _: "50", salida=mensajes.append) == 0
+    assert mensajes[-1] == "Pago semanal: $12,000.00"
