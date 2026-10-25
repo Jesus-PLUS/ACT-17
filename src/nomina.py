@@ -40,13 +40,18 @@ def calcular_nomina(horas):
             + dobles * TARIFA_NORMAL * 2
             + triples * TARIFA_NORMAL * 3)
 
+# coordina la entrada del usuario, el cálculo de nómina y la presentación del resultado
 def main(entrada=input, salida=print):
     """Lee las horas, muestra el pago o informa si la entrada no es válida."""
+
+    # solicita las horas, las convierte a número decimal y llama a calcular_nomina
     try:
         horas = float(entrada("Horas trabajadas (0-64): "))
         pago = calcular_nomina(horas)
+    # si algún paso genera un ValueError, muestra el mensaje de entrada inválida y devuelve 1
     except ValueError:
         salida(MENSAJE_INVALIDO)
         return 1
+    # si termina bien, muestra el pago
     salida(f"Pago semanal: ${pago:,.2f}") # separador de miles y dos decimales
     return 0
