@@ -16,6 +16,8 @@ from src.nomina import calcular_nomina
 @pytest.mark.parametrize("horas, esperado", [
     (0, 0), # para 0 horas
     (40, 8000), # para 40 hrs y pago normal
+    (56, 14400), # para hrs dobles
 ])
 def test_pago_normal(horas, esperado):
     assert calcular_nomina(horas) == esperado
+
