@@ -10,3 +10,6 @@ Reglas de negocio:
 """
 def calcular_nomina(horas):
     return 0
+
+def calcular_nomina(horas):
+    return horas * 200

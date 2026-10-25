@@ -8,8 +8,14 @@ Un caso por cada regla, tomado en su valor límite (donde suelen estar los error
 5. Valor no numérico Ej: "abc"
 Más dos pruebas del programa completo: captura válida (50 h) y mensaje "Número no válido"
 """
-
+import pytest
 from src.nomina import calcular_nomina
 
-def test_cero_horas():
-    assert calcular_nomina(0) == 0
+# parametrización
+# Ejecuta la misma prueba una vez por cada par de horas y pago esperado.
+@pytest.mark.parametrize("horas, esperado", [
+    (0, 0), # para 0 horas
+    (40, 8000), # para 40 hrs y pago normal
+])
+def test_pago_normal(horas, esperado):
+    assert calcular_nomina(horas) == esperado
